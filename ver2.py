@@ -23,7 +23,7 @@ kieu2 = "\033[1;35;40m"
 print("{0}{1}Tool auto đăng bài lên httpgroup".format(" "*10,green))
 print()
 print("{0}{1}Made by NguyenQuy with luv {2}<3 <3 <3".format(" "*30,"\033[3;32;40m",red))
-print("{0}{1}Last update: 22/8/2021".format(" "*30,"\033[3;32;40m"))
+print("{0}{1}Last update: 18/10/2021".format(" "*30,"\033[3;32;40m"))
 
 
 def login(email,passwd):
@@ -71,8 +71,14 @@ def config():
 data = config()
 email = data["username"]
 passwd = data["password"]
-linkbao = data["url"]
-
+print()
+for i in data:
+    if "url" in i:
+        print("",i[-1],".",data[i])
+print()
+choose = int(input(" {0}[?] {1}Chọn báo điện tử: ".format(red,green)))
+linkbao = data["url{0}".format(choose)]
+print(" {0}> Báo điện tử : {1}{2}".format(white,blue,linkbao))
 print()
 print(" {0}> Email: {1}{2}".format(white,blue,email))
 
@@ -90,7 +96,7 @@ except:
 	exit()
 
 listtus = listBaiViet(linkbao)
-print(" {0}[*] Số bài viết: {1}{2}".format(white,red,len(listtus)))
+print(" {0}[*] Số bài viết trên {1}{2}: {3}{4}".format(white,blue,linkbao,red,len(listtus)))
 if len(listtus) == 0:
 	print(" {0}[*] Chưa có bài viết mới trên {1}{2}".format(white,blue,linkbao))
 	print(" {0}[*] Vui lòng chọn báo điện tử khác hoặc quay lại sau ít phút {1}<3".format(white,red))
